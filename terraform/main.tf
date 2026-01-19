@@ -25,7 +25,7 @@ variable "bucket_name" {
 }
 
 resource "google_storage_bucket" "test_bucket" {
-  name                        = var.bucket_name
+  name                        = var.bucket_name + "-new-version"
   location                    = "US" # Options: US, EU, ASIA
   force_destroy               = true # Allows deleting a bucket that still has files inside
   uniform_bucket_level_access = true # Recommended security setting
