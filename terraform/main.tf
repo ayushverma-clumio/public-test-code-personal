@@ -21,11 +21,11 @@ variable "project_id" {
 variable "bucket_name" {
   type        = string
   description = "A unique name for the GCS bucket."
-    default     = "test-bucket-123456"
+  default     = "test-bucket-123456"
 }
 
 resource "google_storage_bucket" "test_bucket" {
-  name                        = var.bucket_name + "-new-version"
+  name                        = "${var.bucket_name}-new-version"
   location                    = "US" # Options: US, EU, ASIA
   force_destroy               = true # Allows deleting a bucket that still has files inside
   uniform_bucket_level_access = true # Recommended security setting
