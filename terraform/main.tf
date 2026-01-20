@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = ">= 5.0" # Matches the version in your existing main.tf
+      version = ">= 5.0"
     }
   }
 }
@@ -21,11 +21,17 @@ variable "project_id" {
 variable "bucket_name" {
   type        = string
   description = "A unique name for the GCS bucket."
-  default     = "test-bucket-123456"
+  default     = "test-bucket-1234567899"
+}
+
+variable "token" {
+  type        = string
+  description = "A unique token for the GCS bucket."
+  sensitive   = true
 }
 
 resource "google_storage_bucket" "test_bucket" {
-  name                        = "${var.bucket_name}-new-version"
+  name                        = "${var.bucket_name}-latest"
   location                    = "US" # Options: US, EU, ASIA
   force_destroy               = true # Allows deleting a bucket that still has files inside
   uniform_bucket_level_access = true # Recommended security setting
